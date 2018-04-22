@@ -1,0 +1,53 @@
+<!--
+  Generated template for the CoursePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+   <!--  <div class="course-head">
+      <button ion-button small (click)="faceToFace()">面对面加</button>
+      <button ion-button small (click)="manageGroup()">群管理</button>
+    </div> -->
+  </ion-navbar>
+</ion-header>
+<ion-content class="content-body" all>
+<ion-fab right top edge>
+    <button ion-fab mini><ion-icon name="arrow-dropdown"></ion-icon></button>
+    <ion-fab-list side="bottom">
+      <button ion-button outline small class="option-button" (click)="faceToFace()">面对面</button>
+      <button ion-button outline small class="option-button" (click)="manageGroup()">群管理</button>
+    </ion-fab-list>
+</ion-fab>
+  <div *ngIf = "showCallBackNote" class="float-item-div">
+    <ion-item class="float-item" href="#" no-lines>
+      <ion-label>
+        倒计时：{{callBackSeconds}} 秒   已点名 {{calledCnt}}/{{studentsCnt}}
+      </ion-label>
+    </ion-item>
+  </div>
+  <div *ngIf = "showSpareTimeNote" class="float-item-div">
+    <ion-item class="float-item" href="#" no-lines (click) = "stopSpareTime()">
+      <ion-label>
+          正在闲时统计...点击结束
+      </ion-label>
+    </ion-item>
+  </div>
+  <!--题目发布-->
+  <div *ngIf="showQuestionNote" class="float-item-div">
+    <ion-item class="float-item"  href="#" no-lines (click)="stopQuestion()" text-wrap>
+      <div class="question-content">
+         {{question.content}}  ({{question.score}}分)
+      </div>
+      <div class="choose-answer" *ngIf = "question.type == 1">
+        <li *ngFor="let answer of answerArray;let i=index">{{answer}} <span style="color: blue">{{answerCounter[i]}}/{{studentsCnt}}</span></li>
+      </div>
+      <span>答案：{{question.answer}}</span>
+      <button ion-button block outline small class="question-end-button" (click)="stopQuestion()">结束</button>
+    </ion-item>
+  </div>
+  <ion-list>
+  </ion-list>
+</ion-content>

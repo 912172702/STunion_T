@@ -1,0 +1,42 @@
+<!--
+  Generated template for the CallRollHistoryRecordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>考勤历史</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content all>
+     <div class="callroll-table-div">
+        <table>
+            <thead>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>出勤</th>
+                <th>缺勤</th>
+                <th>迟到</th>
+                <th>请假</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let info of records">
+                    <td>{{info.student.stuNumber}}</td>
+                    <td>{{info.student.stuName}}</td>
+                    <td><input [checked] = "attendCheck(info)" type="radio" name="state{{info.student.stuId}}" value="1"></td>
+                    <td><input [checked] = "absenceCheck(info)" type="radio" name="state{{info.student.stuId}}" value="2"></td>
+                    <td><input [checked] = "lateCheck(info)" type="radio" name="state{{info.student.stuId}}" value="3"></td>
+                    <td><input [checked] = "askForLeaveCheck(info)" type="radio" name="state{{info.student.stuId}}" value="4"></td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</ion-content>
+<ion-footer padding>
+    <button ion-button block color="salary" (click)="outputExcel()">导出Excel</button>
+</ion-footer>

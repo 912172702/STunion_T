@@ -1,0 +1,94 @@
+<!--
+  Generated template for the GroupManagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{course.cName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content all class="content-body">
+    <div class="content-body-div">
+
+        <ion-item class="content-button-head" (click) = "changeCourseIcon()">
+            <div>
+                <img src="{{getCourseIconSrc()}}" />
+            </div>
+            <div class="content-button-head-label">
+                点击更换头像
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+
+        <ion-grid class = 'student-grid'>
+            <ion-label>
+                班级成员
+            </ion-label>
+            <ion-row *ngFor="let row of getRowCountRange()">
+                <ion-col *ngFor="let stu of getStudentRow(row)">
+                    <div class="student-grid-item">
+                        <div *ngIf ="stu.stuName != undefined ">
+                            <img class="student-grid-item-icon" (click)="showDetail(stu)" src = "{{getImageSrc(stu.headIcon)}}"/>                    
+                        </div>
+                        <div class="student-grid-item-label">
+                            {{getSimpleName(stu.stuName)}}
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-item class="content-button" (click)="nitification()">
+            <div class="content-button-label">
+                通知
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item class="content-button">
+            <div class="content-button-label">
+                历史消息
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item class="content-button" (click) = "callRoll()">
+            <div class="content-button-label">
+                考勤
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item class="content-button" (click) = "startSpareTime()">
+            <div class="content-button-label">
+                空闲时间统计
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item class="content-button" (click)="question()">
+            <div class="content-button-label">
+                课堂问答
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item class="content-button" (click) = "courseApply()">
+            <div class="content-button-label">
+                课程预约
+            </div>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+
+        <button class="content-destroy" ion-button block color="danger" (click)="login()">
+            解散课程
+        </button>
+    </div>
+</ion-content>

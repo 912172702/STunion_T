@@ -1,0 +1,46 @@
+<!--
+  Generated template for the CourseApplyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>课程预约</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-item>
+      <ion-label>周几</ion-label>
+       <ion-select placeholder="选择周几" interface="popover" [(ngModel)]="day" cancelText="取消" okText="确定">
+         <ion-option *ngFor="let val of values" [value]="val">{{days[val]}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>上课时间</ion-label>
+      <ion-datetime cancelText="取消" doneText="确定" placeholder="请选择上课时间" displayFormat="HH:mm:ss" [(ngModel)]="time"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>上课地点</ion-label>
+        <ion-input type="text" [(ngModel)]="place" placeholder="请输入上课地点"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            描述：
+        </ion-label>
+    </ion-item>
+    <div class="node-content-div">
+        <textarea rows="10" [(ngModel)] = "applyContent"></textarea>
+    </div>
+</ion-content>
+<ion-footer>
+     <button ion-button block outline color="salary" (click)="apply()">
+         立即预约
+      </button>
+</ion-footer>

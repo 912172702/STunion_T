@@ -1,0 +1,47 @@
+<!--
+  Generated template for the CallRollRecordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>考勤详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding-bottom>
+    <div class="callroll-table-div">
+        <table>
+            <thead>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>出勤</th>
+                <th>缺勤</th>
+                <th>迟到</th>
+                <th>请假</th>
+                <th>口令</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let info of callRollRecords">
+                    <td>{{info.student.stuNumber}}</td>
+                    <td>{{info.student.stuName}}</td>
+                    <td><input (click) = "toAttend(info)" [checked] = "attendCheck(info)" type="radio" name="state{{info.student.stuId}}" value="1"></td>
+                    <td><input (click) = "toAbsence(info)" [checked] = "absenceCheck(info)" type="radio" name="state{{info.student.stuId}}" value="2"></td>
+                    <td><input (click) = "toLate(info)" [checked] = "lateCheck(info)" type="radio" name="state{{info.student.stuId}}" value="3"></td>
+                    <td><input (click) = "toAskForLeave(info)" [checked] = "askForLeaveCheck(info)" type="radio" name="state{{info.student.stuId}}" value="4"></td>
+                    <td>{{info.note}}</td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+</ion-content>
+<ion-footer>
+<div class="option-button">
+    <div><button (click)="saveRecords()" ion-button block>保存记录</button></div>
+    <div><button (click)="cancelSave()" color="danger" ion-button block>取消保存</button></div>
+</div>
+</ion-footer>

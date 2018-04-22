@@ -1,0 +1,34 @@
+<!--
+  Generated template for the CallRollHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>考勤历史</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="history-content" padding>
+    <ion-item href="#">
+        <ion-title class="history-title" left>
+            请选择时间
+        </ion-title>
+    </ion-item>
+    <ion-list>
+        <ion-item class="history-times-item" *ngFor="let time of times" (click) = "checkHistory(time)">
+            <span>{{time}}</span>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+    </ion-list>
+     <ion-item (click) = "getTotalState()">
+        <ion-title  class="history-total" left>
+            查看考勤总览
+        </ion-title>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+    </ion-item>
+</ion-content>

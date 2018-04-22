@@ -1,0 +1,42 @@
+<!--
+  Generated template for the MyQuestionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar class="question-ion-navbar">
+    <div class="question-head-title">
+        <ion-title>我的题目</ion-title>
+    </div>
+    <div class="questsion-head-btn">
+        <button ion-button block outline color="salary" (click)="optionChange()">{{option}}</button>
+    </div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content all>
+    <ion-item  *ngFor="let q of questions" (click)="questionDetail(q)">
+        <ion-checkbox *ngIf="manage" [(ngModel)] = "selected[q.qId]">
+        </ion-checkbox>
+        <div>
+            {{q.createTime}}     <span class="question-type">{{getQType(q)}}</span>
+        </div>
+        <div>
+            <span class="question-content">{{getSimpleContent(q.content)}}</span>
+        </div>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+    </ion-item>
+</ion-content>
+
+<ion-footer class="question-footer" *ngIf="manage">
+    <div>
+        <button ion-button block outline color="salary" (click)="add()">新增</button>
+    </div>
+    <div>
+        <button ion-button block outline color="danger" (click)="delete()">删除</button>
+    </div>
+</ion-footer>

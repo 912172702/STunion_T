@@ -1,0 +1,61 @@
+<!--
+  Generated template for the CreateQuestionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>新建问题</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content all>
+    <ion-item href="#">
+        <ion-select placeholder="选择问题类型"  [(ngModel)]="questionType" cancelText="取消" okText="确定">
+                <ion-option  value="1">选择题</ion-option>
+                <ion-option  value="2">填空题</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+            <ion-label>
+                分值
+            </ion-label>
+            <ion-input type="number" placeholder="请填入分值" [(ngModel)] = "score"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            问题内容
+            <button class="add-line-btn" ion-button block color="salary" (click)="addLine()">添加下划线</button>
+        </ion-label>
+    </ion-item>
+    <ion-item>
+        <textarea [(ngModel)] = "questionContent" rows="6"  style="width: 90%;margin:5px;" placeholder="请填写题目内容"></textarea>
+    </ion-item>
+
+    <div *ngIf = "questionType == 1">
+        <!-- 问题答案 -->
+        <ion-item *ngFor="let number of answerNumber">
+            <ion-label>
+                {{number}}
+            </ion-label>
+            <ion-input type="text" [(ngModel)] = "answerList[getIndex(number)]" placeholder="请填写{{number}}选项"></ion-input>
+        </ion-item>
+        <ion-item (click) = "addChoice()">
+            <ion-icon ion-start name="ios-add-circle-outline"></ion-icon>
+            <span>点击添加选项</span>
+        </ion-item>
+    </div>
+
+    <ion-item>
+        <ion-label>
+            正确答案
+        </ion-label>
+        <ion-input type="text" [(ngModel)] = "trueAnswer" placeholder="请填写正确选项"></ion-input>
+    </ion-item>
+</ion-content>
+
+<ion-footer>
+    <button ion-button block color ="salary" (click)="submit()">提交</button>
+</ion-footer>

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ChooseSpareTimePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>选择空闲时间</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content all>
+    <div class="table-top">
+        <span>点击课表格子</span>
+    </div>
+    <div class="table-div">
+        <table>
+            <thead>
+                <th></th>
+                <th>周日</th>
+                <th>周一</th>
+                <th>周二</th>
+                <th>周三</th>
+                <th>周四</th>
+                <th>周五</th>
+                <th>周六</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of row">
+                    <th>
+                        第<br>{{i+1}}<br>节
+                    </th>
+                    <td *ngFor="let j of col" (click)="chooseItem(j,i)" [style.backgroundColor]="getBackgroundColor(j,i)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</ion-content>
+<ion-footer>
+    <button ion-button block color="salary" (click) = "startSpareTime()">确认</button>
+</ion-footer>

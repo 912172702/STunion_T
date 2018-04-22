@@ -1,0 +1,38 @@
+<ion-header>
+   <ion-navbar>
+      <ion-title>添加课程</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item>
+        <ion-label>课程名</ion-label>
+        <ion-input type="text" [(ngModel)]="cName" placeholder="请输入课程名"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>周几</ion-label>
+       <ion-select placeholder="选择周几" interface="popover" [(ngModel)]="cDay" cancelText="取消" okText="确定">
+         <ion-option *ngFor="let val of values" [value]="val">{{days[val]}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>上课时间</ion-label>
+      <ion-datetime cancelText="取消" doneText="确定" placeholder="请选择上课时间" displayFormat="HH:mm:ss" [(ngModel)]="cTime"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>上课地点</ion-label>
+        <ion-input type="text" [(ngModel)]="cWhere" placeholder="请输入上课地点"></ion-input>
+    </ion-item>
+    
+    <div style="text-align: center; margin-left: 8px; margin-right: 8px;">
+      <button ion-button block color="danger" (click)="cancel()">
+        取消
+      </button>
+    </div>
+    <div style="text-align: center; margin-left: 8px; margin-right: 8px; margin-top: 5px">
+      <button ion-button block outline color="danger" (click)="create()">
+         立即添加
+      </button>
+    </div>
+</ion-content>
